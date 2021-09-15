@@ -75,29 +75,28 @@ added a &lt;- and quotes around Symbol.
 Find the total number of symbols we have in our data frame.
 
 ``` r
-len <- length(my_symbols)
+len <- nrow(my_symbols)
 ```
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: The function length() was computing the length across of
+the data frame (only 1 because only one column). I changed the function
+to nrow() to get the total number of symbols.
 
 5.  Create a new variable in your dataframe that assigns a number to
     each symbol.
 
 ``` r
-my_symbols%Num <- 1:len
+my_symbols$Num <- 1:len
 ```
-
-    ## Error: <text>:1:11: unexpected input
-    ## 1: my_symbols%Num <- 1:len
-    ##               ^
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: The error denoted a typo, so I changed the % to a $ to
+access the dataframe.
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If things made
 sense, feel free to continue on while you wait. Otherwise, contact your
