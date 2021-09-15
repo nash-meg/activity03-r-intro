@@ -32,7 +32,7 @@ lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":", "/", ".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":", "/")
+punctuation <- c(".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":")
 ```
 
 Comment on what you noticed about the errors and how you used this
@@ -46,7 +46,7 @@ instead of a character indicator; to do this you add a  right before it.
 Make one long vector containing all the symbols.
 
 ``` r
-my_symbols <- cbind(lower_case, upper_case, punctuation)
+my_symbols <- c(lower_case, upper_case, punctuation)
 ```
 
 Comment on what you noticed about the errors and how you used this
@@ -54,23 +54,23 @@ information to correct the issues.
 
 **Response**: The error “number of rows of result is not a multiple of
 vector length (arg 3)” means that the third argument (punctuation) is
-not the same length as the other vectors. To solve this, I added a / and
-then repeated the punctuation in the vector to make it the same length.
+not the same length as the other vectors. To solve this, I changed the
+vector to just c() instead of cbind().
 
 Turn the `my_symbols` vector into a data frame, with the variable name
 “Symbol”.
 
 ``` r
 my_symbols <- data.frame(my_symbols)
-Symbol <- names(my_symbols)
+names(my_symbols) <- "Symbol"
 ```
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
 **Response**: The first error was a typo in data.frame (missing the .).
-The second arrow was incorrectly creating an object so I flipped the
-sides and used a &lt;-.
+The second error was incorrectly setting the name of the data frame so I
+added a &lt;- and quotes around Symbol.
 
 Find the total number of symbols we have in our data frame.
 
