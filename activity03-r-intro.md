@@ -30,20 +30,18 @@ lower case letters, and 3) some punctuation marks.
 ``` r
 lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
 
-upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", """, "(", ")", " ", "-", ";", ":")
+punctuation <- c(".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":", "/", ".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":", "/")
 ```
-
-    ## Error: <text>:3:56: unexpected string constant
-    ## 2: 
-    ## 3: upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I"
-    ##                                                           ^
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**:The lower\_case did not error. The upper\_case error was
+just missing a comma between “H” and “I” so I added that. The
+punctuation error was having R recognize the " as a character itself
+instead of a character indicator; to do this you add a  right before it.
 
 Make one long vector containing all the symbols.
 
@@ -51,40 +49,34 @@ Make one long vector containing all the symbols.
 my_symbols <- cbind(lower_case, upper_case, punctuation)
 ```
 
-    ## Error in cbind(lower_case, upper_case, punctuation): object 'lower_case' not found
-
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: The error “number of rows of result is not a multiple of
+vector length (arg 3)” means that the third argument (punctuation) is
+not the same length as the other vectors. To solve this, I added a / and
+then repeated the punctuation in the vector to make it the same length.
 
 Turn the `my_symbols` vector into a data frame, with the variable name
 “Symbol”.
 
 ``` r
-my_symbols <- dataframe(my_symbols)
+my_symbols <- data.frame(my_symbols)
+Symbol <- names(my_symbols)
 ```
-
-    ## Error in dataframe(my_symbols): could not find function "dataframe"
-
-``` r
-names(my_symbols) = Symbol
-```
-
-    ## Error in eval(expr, envir, enclos): object 'Symbol' not found
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: The first error was a typo in data.frame (missing the .).
+The second arrow was incorrectly creating an object so I flipped the
+sides and used a &lt;-.
 
 Find the total number of symbols we have in our data frame.
 
 ``` r
 len <- length(my_symbols)
 ```
-
-    ## Error in eval(expr, envir, enclos): object 'my_symbols' not found
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
@@ -178,7 +170,7 @@ the final message, by running the following code:
 stringr::str_c(my_symbols$Symbol[top_secret], collapse = "")
 ```
 
-    ## Error in stri_c(..., sep = sep, collapse = collapse, ignore_null = TRUE): object 'my_symbols' not found
+    ## [1] ""
 
 Google the first line of this message, if you do not recognize it, to
 see what it is.
